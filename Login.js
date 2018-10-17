@@ -26,6 +26,17 @@ var resultSpan = document.getElementById('loginResult');
 //we are creating a counting variable to track login attempts
 var counter = 3;
 
+// Creating a function to push new users into the array "users"
+function signUp() {  
+ // we bind each id to a variable for easy use  
+var createUsername = document.getElementById('createUsername').value;
+var createAge = document.getElementById('createAge').value;
+var createPassword = document.getElementById('createPassword').value;
+ 
+users.push(new User(createUsername, createAge, createPassword));
+
+}
+
 // Bind the onClick-function to our own function
 submit.onclick = function(){
 
@@ -49,6 +60,9 @@ submit.onclick = function(){
     if(user.username == inputUsername.value && user.password == inputPassword.value) {
         //this redirects the user to our menu page
         window.location = "menu.html";
+        jQuery(window).load(function() {
+          sessionStorage.setItem('status','loggedIn') 
+        });
 
       // Return true to jump out of the function, since we now have all we need.
       return true;

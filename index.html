@@ -7,14 +7,21 @@
 <body>
 
 <h1>Login function</h1>
-
+<form>
 <input type="text" name="username" id="username"/>
 <input type="password" name="password" id="password" />
 
 <input type="button" value="Login" name="submit" id="submit" />
-
+</form>
 <span id="loginResult"></span>
 
+<h2>Create user</h2>
+<form>
+<input type="text" name="username" id="createUsername" value="" />
+<input type="age" name= "age" id="createAge" value="" />
+<input type="password" name="password" id="createPassword" value="" />
+<input type ="button" onclick="signUp()" value="Add" />
+</form>
 <script src="./Login.js"></script>
 </body>
 </html>
