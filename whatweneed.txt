@@ -1,0 +1,11 @@
+// WHAT WE NEED
+
+- Restart game
+- Session/required to login to play 
+- Rank updating 
+- Styling in general
+- Images for the cards when drawn
+- Show previous card(s) 
+- Navigation 
+- Drinking aspect; visualisation
+- Show profile 
