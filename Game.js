@@ -73,7 +73,7 @@ function startGame(){
     //this variable selects a radom card from the deck
 	var draw = deck[random];
 	   //We show the result
-	document.getElementById("cardResult").innerHTML = draw.name + ' ' + draw.suit; 
+	   document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw.suit+"/"+draw.name+".jpg>")
 	//Adds 1 to clicked
 	clicked++;
 	//Disable button statement: After clicking 'start game' the draw button disables and draw2 + draw3 enables
@@ -91,7 +91,12 @@ function Higher(){
 	//We yet again select a random card from the deck
 var random2 = Math.floor(Math.random() * deck.length);
 var draw2 = deck[random2];
-document.getElementById("cardResult").innerHTML = draw2.name + ' ' + draw2.suit; 
+
+// THE OLD VERSION: document.getElementById("cardResult").innerHTML = draw2.name + ' ' + draw2.suit; 
+// New version: Adds the picture to the draw
+document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
+
+
 //We compare the new drawn card's value to the newest card in the used.cards array
 if (draw2.value > used_cards[0].value){
 	//We add one to the variable rights and tell the user how many correct guesses they have 
@@ -99,9 +104,10 @@ if (draw2.value > used_cards[0].value){
 	document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 	
 	//We check whether the user have won yet
-if (rights == 1) {
+if (rights == 5) {
+	// I got it to work by moving the "disabled=false above the "you are the champion"
+	document.getElementById("draw").disabled=false;
 	document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
-	// document.getElementById("draw").disabled=false; doesnt work.. need to refresh page or reset counter?
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
 }
@@ -120,15 +126,14 @@ deck.splice(random2, 1);
 function Lower(){
 	var random2 = Math.floor(Math.random() * deck.length);
 	var draw2 = deck[random2];
-	document.getElementById("cardResult").innerHTML = draw2.name + ' ' + draw2.suit; 
+	document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
 	if (draw2.value < used_cards[0].value){
 		rights++;
 		document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
-	if (rights == 1) {
+	if (rights == 5) {
 	
+		document.getElementById("draw").disabled=false;
 		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
-		
-		//document.getElementById("draw").disabled=false; - doesnt work.. need to refresh page or reset counter?
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
 	}
