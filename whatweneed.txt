@@ -9,3 +9,7 @@
 - Navigation 
 - Drinking aspect; visualisation
 - Show profile 
+
+PROBLEMS 
+- Some cards have the wrong value
+- When you win and restart game, it keeps counting correct guesses.
