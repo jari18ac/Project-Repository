@@ -4,7 +4,6 @@
 - Session/required to login to play -> https://www.taniarascia.com/how-to-use-local-storage-with-javascript/ 
 - Rank updating 
 - Styling in general
-- Images for the cards when drawn
 - Show previous card(s) 
 - Navigation 
 - Drinking aspect; visualisation
