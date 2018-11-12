@@ -6,7 +6,6 @@ class User {
         //this. assigns the 'username' property for a specific User (given in the corresponding field)
         this.username = username;
         this.age = age;
-        this.rank = rank; 
         this.password = password;
     }
 }

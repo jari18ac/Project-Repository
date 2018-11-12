@@ -4,6 +4,8 @@ var used_cards = new Array();
 var rights = 0;
 //This variable enables us to disable the button after first use
 var clicked = 0;
+var guesses = 0; 
+var correctGuesses = localStorage.getItem('CorrectGuesses', correctGuesses); 
 
 //We define a function called card and set three parameters
 	class Card{
@@ -72,7 +74,7 @@ var clicked = 0;
 	//We start the game
 function startGame(){
     var random = Math.floor(Math.random() * deck.length);
-    //this variable selects a radom card from the deck
+    //this variable selects a random card from the deck
 	var draw = deck[random];
 	   //We show the result
 	   document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw.suit+"/"+draw.name+".jpg>")
@@ -83,18 +85,21 @@ function startGame(){
 	document.getElementById("draw").disabled=true;
 	document.getElementById("draw2").disabled=false;
 	document.getElementById("draw3").disabled=false;
+//(For when game is restarted after 5 correct) We splice the array with used cards to avoid the latest card from the previous game to be taken into account
+	   used_cards.splice(0,1);
 	   //We push the drawn card into the array used.cards for later use 
 	   used_cards.push(draw);
 	//we use splice to remove the randomly drawn card from the array
 	deck.splice(random, 1);
+	
 }
 //We create a function to both the higher and lower button
 function Higher(){
 	//We yet again select a random card from the deck
 var random2 = Math.floor(Math.random() * deck.length);
 var draw2 = deck[random2];
+console.log(draw2);
 
-// THE OLD VERSION: document.getElementById("cardResult").innerHTML = draw2.name + ' ' + draw2.suit; 
 // New version: Adds the picture to the draw
 document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
 
@@ -103,15 +108,18 @@ document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw
 if (draw2.value > used_cards[0].value){
 	//We add one to the variable rights and tell the user how many correct guesses they have 
 	rights++;
+	correctGuesses++; 
 	document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
+	console.log(localStorage.getItem('CorrectGuesses', correctGuesses));
 	
 	//We check whether the user have won yet
-if (rights == 5) {
+if (rights == 2) {
 	// I got it to work by moving the "disabled=false above the "you are the champion"
 	document.getElementById("draw").disabled=false;
 	document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
+	localStorage.setItem('CorrectGuesses', correctGuesses);
 	rights = 0;
 }
 
@@ -129,16 +137,20 @@ deck.splice(random2, 1);
 function Lower(){
 	var random2 = Math.floor(Math.random() * deck.length);
 	var draw2 = deck[random2];
+	console.log(draw2);
 	document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
 	if (draw2.value < used_cards[0].value){
 		rights++;
+		correctGuesses++;
+		console.log(localStorage.getItem('CorrectGuesses', correctGuesses))
 		document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
-	if (rights == 5) {
+	if (rights == 2) {
 	
 		document.getElementById("draw").disabled=false;
 		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
+		localStorage.setItem('CorrectGuesses', correctGuesses);
 		rights = 0;
 	}
 

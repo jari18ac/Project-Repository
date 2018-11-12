@@ -1,14 +1,12 @@
 // WHAT WE NEED
 
-- Restart game
+- Restart game with new deck 
 - Session/required to login to play -> https://www.taniarascia.com/how-to-use-local-storage-with-javascript/ 
-- Rank updating 
+- Rank updating - almost done; we need 'guesses' and a calculation between guesses and correct guesses  
 - Styling in general
-- Show previous card(s) 
 - Navigation 
 - Drinking aspect; visualisation
 - Show profile 
+- Show previous card(s) 
 
-PROBLEMS 
-- Some cards have the wrong value
-- When you win and restart game, it keeps counting correct guesses.
+
