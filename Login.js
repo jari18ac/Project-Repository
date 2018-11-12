@@ -17,15 +17,13 @@ var submit = document.getElementById('submit');
 //creating a 'span' that is called after the login result
 var resultSpan = document.getElementById('loginResult');
 
-//we are creating a counting variable to track login attempts
-var counter = 3;
-
 // Creating a function to push new users into the array "users"
 function signUp() {  
  // we bind each id to a variable for easy use  
 var createUsername = document.getElementById('createUsername').value;
 var createAge = document.getElementById('createAge').value;
 var createPassword = document.getElementById('createPassword').value;
+//We use localStorage to store the data typed in the fields
 localStorage.setItem("username", createUsername);
 localStorage.setItem("age", createAge);
 localStorage.setItem("password", createPassword);
@@ -38,8 +36,11 @@ submit.onclick = function(){
     // Bind the two input fields and get the value
     var inputUsername = document.getElementById('username').value;
     var inputPassword = document.getElementById('password').value;
+    // We check whether the input matches what is stored in localStorage
     if ((inputUsername == localStorage.getItem('username')) && (inputPassword == localStorage.getItem('password'))) {
+    //We set a status to the user to be able to check whether they are logged in or not at other pages. Note that the comma (,) functions as a parent or =
       localStorage.setItem('status', 'loggedIn') 
+      //Redirect to new page
       window.location = "menu.html";
         jQuery(window).load(function() {
         });

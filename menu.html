@@ -7,13 +7,14 @@
 <body>
 <span id="welcomeMessage"></span>
 <script>
+    //We check whether the user is logged in 
 if (localStorage.getItem('status', 'loggedIn')) {
+    //Welcome message to the user 
 document.getElementById("welcomeMessage").innerHTML = "Welcome " + localStorage.getItem('username') + "!";
 }
 else{
-    window.location = "index.html";
-        jQuery(window).load(function() {
-        });
-};
+    // If they are not logged in, they are returned to the login file
+window.location.replace('index.html'); 
+}
 </script>
 <script src="Login.js"></script>
