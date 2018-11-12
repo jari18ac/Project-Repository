@@ -1,0 +1,20 @@
+.login {
+height:100%;
+width:20%;
+margin:auto;
+border:1px #CCC solid;
+padding:10px;
+}
+ 
+.login input {
+padding:5px;
+margin:5px
+}
+
+#signup {
+    display: none;
+  }
+  
+  #signup:target {
+    display: block;
+  }

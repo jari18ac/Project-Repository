@@ -127,6 +127,7 @@ if (rights == 2) {
 	//We reset the variable 'rights' when the guess is wrong
 	rights = 0;
 	document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
+	document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 }
 //we delete the current card in the used.cards array and push the newly drawn card in there instead
 used_cards.splice(0,1);
@@ -157,7 +158,7 @@ function Lower(){
 	}else if (draw2.value > used_cards[0].value){
 		rights = 0;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
-		
+		document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 	}
 	used_cards.splice(0,1);
 used_cards.push(draw2); 
