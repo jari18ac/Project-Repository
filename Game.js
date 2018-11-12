@@ -1,70 +1,72 @@
 //We make an empty array for later use 
 var used_cards = new Array();
 // This counts the amount of correct guesses
-var rights = 0
+var rights = 0;
 //This variable enables us to disable the button after first use
 var clicked = 0;
 
 //We define a function called card and set three parameters
-	function card(name,suit,value) {
-		this.name = name;
-		this.suit = suit;
-		this.value = value;
-    } 
+	class Card{
+		constructor(name,suit,value) {
+			this.name = name;
+			this.suit = suit;
+			this.value = value;
+	} 
+}
 	//We add cards to our deck
 	var deck = [
-		new card('Ace', 'Hearts',1),
-		new card('Two', 'Hearts',2),
-		new card('Three', 'Hearts',3),
-		new card('Four', 'Hearts',4),
-		new card('Five', 'Hearts',5),
-		new card('Six', 'Hearts',6),
-		new card('Seven', 'Hearts',7),
-		new card('Eight', 'Hearts',8),
-		new card('Nine', 'Hearts',9),
-		new card('Ten', 'Hearts',10),
-		new card('Jack', 'Hearts',11),
-		new card('Queen', 'Hearts',12),
-		new card('King', 'Hearts',13),
-		new card('Ace', 'Diamonds',1),
-		new card('Two', 'Diamonds',2),
-		new card('Three', 'Diamonds',3),
-		new card('Four', 'Diamonds',4),
-		new card('Five', 'Diamonds',5),
-		new card('Six', 'Diamonds',6),
-		new card('Seven', 'Diamonds',7),
-		new card('Eight', 'Diamonds',8),
-		new card('Nine', 'Diamonds',9),
-		new card('Ten', 'Diamonds',10),
-		new card('Jack', 'Diamonds',11),
-		new card('Queen', 'Diamonds',12),
-		new card('King', 'Diamonds',13),
-		new card('Ace', 'Clubs',1),
-		new card('Two', 'Clubs',2),
-		new card('Three', 'Clubs',3),
-		new card('Four', 'Clubs',4),
-		new card('Five', 'Clubs',5),
-		new card('Six', 'Clubs',6),
-		new card('Seven', 'Clubs',7),
-		new card('Eight', 'Clubs',8),
-		new card('Nine', 'Clubs',9),
-		new card('Ten', 'Clubs',10),
-		new card('Jack', 'Clubs',11),
-		new card('Queen', 'Clubs',12),
-		new card('King', 'Clubs',13),
-		new card('Ace', 'Spades',1),
-		new card('Two', 'Spades',2),
-		new card('Three', 'Spades',3),
-		new card('Four', 'Spades',4),
-		new card('Five', 'Spades',5),
-		new card('Six', 'Spades',6),
-		new card('Seven', 'Spades',7),
-		new card('Eight', 'Spades',8),
-		new card('Nine', 'Spades',9),
-		new card('Ten', 'Spades',10),
-		new card('Jack', 'Spades',11),
-		new card('Queen', 'Spades',12),
-		new card('King', 'Spades',13)
+		new Card('Ace', 'Hearts',1),
+		new Card('Two', 'Hearts',2),
+		new Card('Three', 'Hearts',3),
+		new Card('Four', 'Hearts',4),
+		new Card('Five', 'Hearts',5),
+		new Card('Six', 'Hearts',6),
+		new Card('Seven', 'Hearts',7),
+		new Card('Eight', 'Hearts',8),
+		new Card('Nine', 'Hearts',9),
+		new Card('Ten', 'Hearts',10),
+		new Card('Jack', 'Hearts',11),
+		new Card('Queen', 'Hearts',12),
+		new Card('King', 'Hearts',13),
+		new Card('Ace', 'Diamonds',1),
+		new Card('Two', 'Diamonds',2),
+		new Card('Three', 'Diamonds',3),
+		new Card('Four', 'Diamonds',4),
+		new Card('Five', 'Diamonds',5),
+		new Card('Six', 'Diamonds',6),
+		new Card('Seven', 'Diamonds',7),
+		new Card('Eight', 'Diamonds',8),
+		new Card('Nine', 'Diamonds',9),
+		new Card('Ten', 'Diamonds',10),
+		new Card('Jack', 'Diamonds',11),
+		new Card('Queen', 'Diamonds',12),
+		new Card('King', 'Diamonds',13),
+		new Card('Ace', 'Clubs',1),
+		new Card('Two', 'Clubs',2),
+		new Card('Three', 'Clubs',3),
+		new Card('Four', 'Clubs',4),
+		new Card('Five', 'Clubs',5),
+		new Card('Six', 'Clubs',6),
+		new Card('Seven', 'Clubs',7),
+		new Card('Eight', 'Clubs',8),
+		new Card('Nine', 'Clubs',9),
+		new Card('Ten', 'Clubs',10),
+		new Card('Jack', 'Clubs',11),
+		new Card('Queen', 'Clubs',12),
+		new Card('King', 'Clubs',13),
+		new Card('Ace', 'Spades',1),
+		new Card('Two', 'Spades',2),
+		new Card('Three', 'Spades',3),
+		new Card('Four', 'Spades',4),
+		new Card('Five', 'Spades',5),
+		new Card('Six', 'Spades',6),
+		new Card('Seven', 'Spades',7),
+		new Card('Eight', 'Spades',8),
+		new Card('Nine', 'Spades',9),
+		new Card('Ten', 'Spades',10),
+		new Card('Jack', 'Spades',11),
+		new Card('Queen', 'Spades',12),
+		new Card('King', 'Spades',13)
 	];
 	
 	//We start the game
@@ -110,6 +112,7 @@ if (rights == 5) {
 	document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
+	rights = 0;
 }
 
 }else if (draw2.value < used_cards[0].value){
@@ -136,6 +139,7 @@ function Lower(){
 		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
+		rights = 0;
 	}
 
 	}else if (draw2.value > used_cards[0].value){
