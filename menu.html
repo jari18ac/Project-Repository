@@ -1,9 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login function</title>
+</head>
+<body>
+<span id="welcomeMessage"></span>
 <script>
-if (sessionStorage.getItem('status') != null)
-    console.log("Welcome")
-
-else{
-    console.log("You are not logged in")
+if (localStorage.getItem('status', 'loggedIn')) {
+document.getElementById("welcomeMessage").innerHTML = "Welcome " + localStorage.getItem('username') + "!";
 }
+else{
+    window.location = "index.html";
+        jQuery(window).load(function() {
+        });
+};
 </script>
-<script src="./Login.js"></script>
+<script src="Login.js"></script>
