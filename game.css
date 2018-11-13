@@ -1,13 +1,33 @@
 .game {
-	width: 400px;
+  width: 400px;
+  height: 600px;
 	margin: 0 auto;
 	padding: 20px;
 	border: 1px solid #E0E0E0;
-	text-align: center;
+  text-align: center;
+  position: relative
 }
-.controls {
+#controls {
 	border-top: 1px solid #E0E0E0;
-	padding: 20px 0 0;
+  padding-top: 350px;
+}
+
+#cardResult {
+  float: left;
+  padding-top: 5px;
+}
+
+#UsedCardResult {
+  float: right;
+  padding-top: 5px;
+}
+
+.currentCard {
+  float: left;
+}
+
+.previousCard {
+  float: right; 
 }
 
 #drinkToggle {
@@ -22,3 +42,4 @@
     padding: 5px;
     width: 160px;
   }
+ 
