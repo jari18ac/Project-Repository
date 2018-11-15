@@ -7,27 +7,34 @@
 </head>
 <body>
 
-
-<div class="login">
-        <h2>Welcome! Please login to play</h2>
+        <div class="login-page">
+                <div class="form">
+                                <form class="register-form">
+                                                <h2>Create user</h2>
+                                        <input type="text" placeholder="Username *" name="username" id="createUsername" value="" required />
+                                        <input type="password"  placeholder="Password *" name="password" id="createPassword" value="" required />
+                                        <input type="age"  placeholder="Age" name= "age" id="createAge" value="" />
+                                        <input type="button" id="button" onclick="signUp()" value="Create" />
+                                        <p class="message"><a href="#">Sign In</a></p>
+                                        </form>
+<form class="login-form">
+<h2>Welcome! Please login to play</h2>
 <input type="text" placeholder="Username" name="username" id="username"/>
 <input type="password" placeholder="Password" name="password" id="password" />
 
-<input type="button" value="Login" name="submit" id="submit" />
+<input type="button" onclick="login()" value="Login" name="submit" id="submit" />
 <br>
-<a href="#signup">Signup</a>
-<span id="loginResult"></span>
+<p class="message">Not registered? <a href="#">Create an account</a></p>
+</form>
+<span id="loginResult">
+      
+                </div>
+        </div>
 
-
-
-<div id="signup">
-        <h2>Create user</h2>
-<input type="text" placeholder="Username" name="username" id="createUsername" value="" />
-<input type="age"  placeholder="Age" name= "age" id="createAge" value="" />
-<input type="password"  placeholder="Password" name="password" id="createPassword" value="" />
-<input type ="button" onclick="signUp()" value="Create" />
-</div>
-</div>
 <script src="Login.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script>$('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+     });</script>
 </body>
 </html>
