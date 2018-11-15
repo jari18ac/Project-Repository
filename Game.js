@@ -4,7 +4,7 @@ var used_cards = new Array();
 var rights = 0;
 //This variable enables us to disable the button after first use
 var clicked = 0;
-var guesses = 0; 
+var Guesses = localStorage.getItem('Guesses', Guesses); 
 var correctGuesses = localStorage.getItem('CorrectGuesses', correctGuesses); 
 
 //We define a function called card and set three parameters
@@ -109,6 +109,7 @@ if (draw2.value > used_cards[0].value){
 	//We add one to the variable rights and tell the user how many correct guesses they have 
 	rights++;
 	correctGuesses++; 
+	Guesses++;
 	document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 	console.log(localStorage.getItem('CorrectGuesses', correctGuesses));
 	
@@ -120,12 +121,14 @@ if (rights == 2) {
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
 	localStorage.setItem('CorrectGuesses', correctGuesses);
+	localStorage.setItem('Guesses', Guesses);
 	rights = 0;
 }
 
 }else if (draw2.value < used_cards[0].value){
 	//We reset the variable 'rights' when the guess is wrong
 	rights = 0;
+	Guesses++;
 	document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
 	document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 }
@@ -144,6 +147,7 @@ function Lower(){
 	if (draw2.value < used_cards[0].value){
 		rights++;
 		correctGuesses++;
+		Guesses++;
 		console.log(localStorage.getItem('CorrectGuesses', correctGuesses))
 		document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 	if (rights == 2) {
@@ -153,11 +157,13 @@ function Lower(){
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
 		localStorage.setItem('CorrectGuesses', correctGuesses);
+		localStorage.setItem('Guesses', Guesses);
 		rights = 0;
 	}
 
 	}else if (draw2.value > used_cards[0].value){
 		rights = 0;
+		Guesses++;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 	}
