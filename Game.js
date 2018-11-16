@@ -4,8 +4,10 @@ var used_cards = new Array();
 var rights = 0;
 //This variable enables us to disable the button after first use
 var clicked = 0;
-var Guesses = localStorage.getItem('Guesses', Guesses); 
-var correctGuesses = localStorage.getItem('CorrectGuesses', correctGuesses); 
+var TotalGuesses = localStorage.getItem('Guesses', TotalGuesses); 
+var TotalCorrectGuesses = localStorage.getItem('CorrectGuesses', TotalCorrectGuesses); 
+
+
 
 //We define a function called card and set three parameters
 	class Card{
@@ -108,10 +110,10 @@ document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+
 if (draw2.value > used_cards[0].value){
 	//We add one to the variable rights and tell the user how many correct guesses they have 
 	rights++;
-	correctGuesses++; 
-	Guesses++;
+	TotalCorrectGuesses++; 
+	TotalGuesses++;
 	document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
-	console.log(localStorage.getItem('CorrectGuesses', correctGuesses));
+	console.log(localStorage.getItem('CorrectGuesses', TotalCorrectGuesses));
 	
 	//We check whether the user have won yet
 if (rights == 2) {
@@ -120,15 +122,15 @@ if (rights == 2) {
 	document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
-	localStorage.setItem('CorrectGuesses', correctGuesses);
-	localStorage.setItem('Guesses', Guesses);
+	localStorage.setItem('CorrectGuesses', TotalCorrectGuesses);
+	localStorage.setItem('Guesses', TotalGuesses);
 	rights = 0;
 }
 
 }else if (draw2.value < used_cards[0].value){
 	//We reset the variable 'rights' when the guess is wrong
 	rights = 0;
-	Guesses++;
+	TotalGuesses++;
 	document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
 	document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 }
@@ -146,9 +148,9 @@ function Lower(){
 	document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
 	if (draw2.value < used_cards[0].value){
 		rights++;
-		correctGuesses++;
-		Guesses++;
-		console.log(localStorage.getItem('CorrectGuesses', correctGuesses))
+		TotalCorrectGuesses++;
+		TotalGuesses++;
+		console.log(localStorage.getItem('CorrectGuesses', TotalCorrectGuesses))
 		document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 	if (rights == 2) {
 	
@@ -156,14 +158,14 @@ function Lower(){
 		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
-		localStorage.setItem('CorrectGuesses', correctGuesses);
-		localStorage.setItem('Guesses', Guesses);
+		localStorage.setItem('CorrectGuesses', TotalCorrectGuesses);
+		localStorage.setItem('Guesses', TotalGuesses);
 		rights = 0;
 	}
 
 	}else if (draw2.value > used_cards[0].value){
 		rights = 0;
-		Guesses++;
+		TotalGuesses++;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
 	}

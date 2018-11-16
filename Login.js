@@ -4,12 +4,13 @@ console.log(localStorage);
 class User {
 
     //the constructor will allow us to create new objects for our class
-    constructor(username, age, password, result) {
+    constructor(username, age, password, guesses, correctGuesses) {
         //this. assigns the 'username' property for a specific User (given in the corresponding field)
         this.username = username;
         this.age = age;
         this.password = password;
-        this.result = result;
+        this.guesses = guesses;
+        this.correctGuesses = correctGuesses;
     }
 
 }
@@ -17,15 +18,7 @@ class User {
 // The array 'users' should contain both what we already have in localstorage + the new users created
 users = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
 
- //We have a set of predifined users for the array to use for the highscore later
-users.push(new User("Mathias", "25", "Pepke", ""));
-users.push(new User("James", "24", "Richman", ""));
-users.push(new User("Oliver1", "24", "12", ""));
-users.push(new User("Oliver1", "24", "12", ""));
-users.push(new User("Oliver1", "24", "12", ""));
-users.push(new User("Oliver1", "24", "12", ""));
-users.push(new User("Oliver1", "24", "12", ""));
-users.push(new User("Oliver1", "24", "12", ""));
+
 
 //bind button for later use (logging in & creating users)
 var submit = document.getElementById('submit');
@@ -35,6 +28,17 @@ var resultSpan = document.getElementById('loginResult');
 
 // Creating a function to push new users into the array "users"
 function signUp() {  
+
+     //We have a set of predifined users for the array to use for the highscore later. We add them only on signup to avoid duplicates
+users.push(new User("Mathias", "25", "Pepke", "5", "2"));
+users.push(new User("James", "24", "Richman", "2", "1"));
+users.push(new User("TEst", "24", "12", "1", "0"));
+users.push(new User("Lorem Ipsum", "24", "12", "2", "2"));
+users.push(new User("John", "24", "12", "3", "1"));
+users.push(new User("Pete", "24", "12", "4", "3"));
+users.push(new User("O", "24", "12", "5", "4"));
+users.push(new User("User", "24", "12", "8", "6"));
+
  // we bind each id to a variable for easy use  
 var createUsername = document.getElementById('createUsername').value;
 var createAge = document.getElementById('createAge').value;
@@ -53,17 +57,16 @@ for(var i = 0; i < users.length; i++) {
      var user = users[i];
     // We check whether the username is already taken
     if ((createUsername == user.username )) {
-        document.getElementById('loginResult').innerHTML = "Username is already taken!";
+        document.getElementById('loginResult').innerHTML = "Username " + "'" + createUsername + "'" + " is already taken!";
     
     return false;  
 }
 }
 //We first push the new user into the 'users' array
-users.push(new User(createUsername, createAge, createPassword, ""));
+users.push(new User(createUsername, createAge, createPassword, "0", "0"));
 //We then store the updated array within localstorage by converting it to a string
 localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
 document.getElementById('loginResult').innerHTML = '<p>Success! The account has been created</p>';
-
 
 }
 
@@ -98,12 +101,13 @@ var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) );
     if ((inputUsername == user.username && (inputPassword == user.password))) {
     //We set a status to the user to be able to check whether they are logged in or not at other pages. Note that the comma (,) functions as a parent or =
       localStorage.setItem('status', 'loggedIn') 
-      //We store a new string called username so that we can call out the specific username on other pages
-      localStorage.setItem('username', inputUsername)
-      //Redirect to new page
-      window.location = "menu.html";
-        jQuery(window).load(function() {
-        });
+      //With this login system we have no way to identify the specific user on other pages, so we store a 'currentUser' in localstorage from the last user created. This will however mean that if you create another user and login with an older one, it will think that you are the newest user
+      localStorage.setItem("currentUser", JSON.stringify(myUsers[myUsers.length - 1]));   
+      console.log(localStorage.getItem("currentUser"))
+     // Redirect to new page
+     window.location = "menu.html";
+    jQuery(window).load(function() {
+       });
 
       // Return true to jump out of the function, since we now have all we need.
      return true;

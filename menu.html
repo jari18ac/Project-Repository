@@ -7,10 +7,13 @@
 <body>
 <span id="welcomeMessage"></span>
 <script>
+
+    var currentUser = JSON.parse( localStorage.getItem( "currentUser" ) );
+    console.log(currentUser);
     //We check whether the user is logged in 
 if (localStorage.getItem('status', 'loggedIn')) {
     //Welcome message to the user 
-document.getElementById("welcomeMessage").innerHTML = "Welcome " + localStorage.getItem('username') + "!";
+document.getElementById("welcomeMessage").innerHTML = "Welcome " + currentUser.username + "!";
 }
 else{
     // If they are not logged in, they are returned to the login file
