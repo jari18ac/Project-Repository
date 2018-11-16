@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="game.css" />
+    <link rel="stylesheet" type="text/css" href="login.css" />
     <title>Document</title>
 </head>
 <body>
@@ -12,12 +12,25 @@
                 <script src="Login.js"></script>
     <script src="Game.js"></script>
     <div class="game">
-    
-            <form action="#drinkToggle" method="get">
-                <input type="submit" value="Play with beverage" 
-                     name="Submit" id="beverage" />
-            </form>
-        <div id="drinkToggle">Hello drunk friend</div>
+    <h3>Play with beverage?</h3>
+        <label class="switch">
+            <input type="checkbox" onclick="toggle_visibility('drinkToggle')">
+            
+            <div class="slider"></div>
+        </label>
+
+        <script type="text/javascript">
+           
+                function toggle_visibility(id) {
+                   var e = document.getElementById(id);
+                   if(e.style.display == 'block')
+                      e.style.display = 'none';
+                   else
+                      e.style.display = 'block';
+                }
+           
+            </script>
+        <div id="drinkToggle"></div>
 <br>
 <div class="currentCard">
     <h2>Current card</h2>
