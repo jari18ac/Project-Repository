@@ -28,7 +28,6 @@ var resultSpan = document.getElementById('loginResult');
 
 // Creating a function to push new users into the array "users"
 function signUp() {  
-
  
 
  // we bind each id to a variable for easy use  
@@ -56,13 +55,13 @@ for(var i = 0; i < users.length; i++) {
 }
 //We first push the new user into the 'users' array
 users.push(new User(createUsername, createAge, createPassword, "0", "0"));
+localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
 //We then store the updated array within localstorage by converting it to a string
-
 document.getElementById('loginResult').innerHTML = '<p>Success! The account has been created</p>';
 
-    // ..
+ // ..
     
-    if ((users.length)> 1  ) {
+ if ((users.length)> 1  ) {
     
     return false; }
 
@@ -88,7 +87,7 @@ console.log(users);
 function login() {
 
 //We use JSON.parse to get the data back from localstorage in its original format
-var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) );
+var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) ); 
 
     console.log(myUsers);
     // Bind the two input fields and get the value
@@ -105,8 +104,13 @@ var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) );
 //var storedUsers = localStorage.getItem("localStorageUsers");
 // var storedUsers2 = JSON.parse(storedUsers);
 
+if( myUsers === null ) {
+document.getElementById('loginResult').innerHTML = "Invalid login!";
+}
+else {
+
    // We loop through all our users and return true if we find a match
-   for(var i = 0; i < myUsers.length; i++) {
+   for(var i = 0; i <= myUsers.length; i++) {
     //we create a var user to bind the array of users for easy use (below). Now we can write user instead of myUsers[i]
      var user = myUsers[i];
     // We check whether the input matches what is stored in localStorage
@@ -127,7 +131,7 @@ var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) );
        else {
       document.getElementById('loginResult').innerHTML = "Invalid login!";
      }
-    
+    }
         
     
 }

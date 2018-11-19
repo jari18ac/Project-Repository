@@ -6,6 +6,7 @@ var highscore = users;
 
 
 function getRank() {
+  // We loop through the array of users 
 for (var i = 0; i < highscore.length; i++ ){
 
    //Note to self: We add the "+" before the names, because the names is strings. We cannot get a sum of strings, and adding the "+" makes the system read it as numbers. This sums the new amount of guesses with the old..
