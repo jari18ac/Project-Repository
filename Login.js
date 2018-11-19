@@ -54,7 +54,7 @@ for(var i = 0; i < users.length; i++) {
 }
 }
 //We first push the new user into the 'users' array
-users.push(new User(createUsername, createAge, createPassword, "0", "0"));
+users.splice(0, 0, new User(createUsername, createAge, createPassword, "0", "0"));
 localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
 //We then store the updated array within localstorage by converting it to a string
 document.getElementById('loginResult').innerHTML = '<p>Success! The account has been created</p>';
@@ -86,6 +86,8 @@ console.log(users);
 // Bind the onClick-function to our own function
 function login() {
 
+//We create a new array to be able to store the logged in user later 
+    playThrough = [];
 //We use JSON.parse to get the data back from localstorage in its original format
 var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) ); 
 
@@ -115,15 +117,19 @@ else {
      var user = myUsers[i];
     // We check whether the input matches what is stored in localStorage
     if ((inputUsername == user.username && (inputPassword == user.password))) {
+       //We push the logged in user to our new array in order to store it for later use 
+       playThrough.push(new User(user.username, user.age, user.password, user.guesses, user.correctGuesses)); 
+       console.log(playThrough);
     //We set a status to the user to be able to check whether they are logged in or not at other pages. Note that the comma (,) functions as a parent or =
-      localStorage.setItem('status', 'loggedIn') 
-      //With this login system we have no way to identify the specific user on other pages, so we store a 'currentUser' in localstorage from the last user created. This will however mean that if you create another user and login with an older one, it will think that you are the newest user
-      localStorage.setItem("currentUser", JSON.stringify(myUsers[myUsers.length - 1]));   
-      console.log(localStorage.getItem("currentUser"))
+     localStorage.setItem('status', 'loggedIn') 
+//We store the playThrough array in localstorage so we can update it later 
+      localStorage.setItem("playThrough", JSON.stringify(playThrough));   
+      console.log("playThrough");
+     
      // Redirect to new page
      window.location = "menu.html";
     jQuery(window).load(function() {
-       });
+      });
 
       // Return true to jump out of the function, since we now have all we need.
      return true;
