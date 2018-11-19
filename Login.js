@@ -29,15 +29,7 @@ var resultSpan = document.getElementById('loginResult');
 // Creating a function to push new users into the array "users"
 function signUp() {  
 
-     //We have a set of predifined users for the array to use for the highscore later. We add them only on signup to avoid duplicates
-users.push(new User("Mathias", "25", "Pepke", "5", "2"));
-users.push(new User("James", "24", "Richman", "2", "1"));
-users.push(new User("TEst", "24", "12", "1", "0"));
-users.push(new User("Lorem Ipsum", "24", "12", "2", "2"));
-users.push(new User("John", "24", "12", "3", "1"));
-users.push(new User("Pete", "24", "12", "4", "3"));
-users.push(new User("O", "24", "12", "5", "4"));
-users.push(new User("User", "24", "12", "8", "6"));
+ 
 
  // we bind each id to a variable for easy use  
 var createUsername = document.getElementById('createUsername').value;
@@ -65,10 +57,30 @@ for(var i = 0; i < users.length; i++) {
 //We first push the new user into the 'users' array
 users.push(new User(createUsername, createAge, createPassword, "0", "0"));
 //We then store the updated array within localstorage by converting it to a string
-localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
+
 document.getElementById('loginResult').innerHTML = '<p>Success! The account has been created</p>';
 
+    // ..
+    
+    if ((users.length)> 1  ) {
+    
+    return false; }
+
+else {
+//We have a set of predifined users for the array to use for the highscore later. We add them only on signup to avoid duplicates
+ 
+users.push(new User("Mathias", "25", "Pepke", "5", "2"));
+users.push(new User("James", "24", "Richman", "2", "1"));
+users.push(new User("TEst", "24", "12", "1", "0"));
+users.push(new User("Lorem Ipsum", "24", "12", "2", "2"));
+users.push(new User("John", "24", "12", "3", "1"));
+users.push(new User("Pete", "24", "12", "4", "3"));
+users.push(new User("O", "24", "12", "5", "4"));
+users.push(new User("User", "24", "12", "8", "6"));
 }
+localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
+}
+    
 
 console.log(users);
 
@@ -120,4 +132,3 @@ var myUsers = JSON.parse( localStorage.getItem( "localStorageUsers" ) );
     
 }
 }
-
