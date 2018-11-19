@@ -66,7 +66,7 @@ document.getElementById('loginResult').innerHTML = '<p>Success! The account has 
     return false; }
 
 else {
-//We have a set of predifined users for the array to use for the highscore later. We add them only on signup to avoid duplicates
+//We have a set of predifined users for the array to use for the users later. We add them only on signup to avoid duplicates
  
 users.push(new User("Mathias", "25", "Pepke", "5", "2"));
 users.push(new User("James", "24", "Richman", "2", "1"));

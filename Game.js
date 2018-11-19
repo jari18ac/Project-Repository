@@ -4,9 +4,10 @@ var used_cards = new Array();
 var rights = 0;
 //This variable enables us to disable the button after first use
 var clicked = 0;
-var TotalGuesses = localStorage.getItem('Guesses', TotalGuesses); 
-var TotalCorrectGuesses = localStorage.getItem('CorrectGuesses', TotalCorrectGuesses); 
-
+var getPlayThrough = JSON.parse(localStorage.getItem('playThrough'));
+var TotalGuesses = +getPlayThrough[0].guesses
+var TotalCorrectGuesses = +getPlayThrough[0].correctGuesses
+console.log(TotalGuesses, TotalCorrectGuesses);
 
 
 //We define a function called card and set three parameters
@@ -73,6 +74,9 @@ var TotalCorrectGuesses = localStorage.getItem('CorrectGuesses', TotalCorrectGue
 		new Card('King', 'Spades',13)
 	];
 	
+	//We create a array called playThrough to update the values within the localstorage
+ playThrough = [];
+
 	//We start the game
 function startGame(){
     var random = Math.floor(Math.random() * deck.length);
@@ -122,8 +126,14 @@ if (rights == 2) {
 	document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 	document.getElementById("draw2").disabled=true;
 	document.getElementById("draw3").disabled=true;
-	localStorage.setItem('CorrectGuesses', TotalCorrectGuesses);
-	localStorage.setItem('Guesses', TotalGuesses);
+	//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
+	playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+	localStorage.setItem("playThrough", JSON.stringify(playThrough));  
+// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
+	var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
+	// We then replace what is in localStorageUsers with the new merged array. 
+	localStorage.setItem("localStorageUsers", JSON.stringify(merge));
+	console.log(merge);
 	rights = 0;
 }
 
@@ -158,8 +168,12 @@ function Lower(){
 		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
-		localStorage.setItem('CorrectGuesses', TotalCorrectGuesses);
-		localStorage.setItem('Guesses', TotalGuesses);
+		//
+		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+	localStorage.setItem("playThrough", JSON.stringify(playThrough));   
+	var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
+	console.log(merge);
+	localStorage.setItem("localStorageUsers", JSON.stringify(merge));
 		rights = 0;
 	}
 
