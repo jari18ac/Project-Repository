@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <title>Profile</title>
+<h1 style="text-align:center;">Profile Page</h1>
+
+</head>
+<body>  
+<!-- Following code checks if a user is logged in -->
+ <h3 style="text-align:center;"><span id="welcomeMessage"></span></h3>   
+<script>
+    var currentUser = JSON.parse( localStorage.getItem( "currentUser" ) );
+        console.log(currentUser);
+        //We check whether the user is logged in 
+    if (localStorage.getItem('status', 'loggedIn')) {
+        //Welcome message to the user 
+    document.getElementById("welcomeMessage").innerHTML = currentUser.username + ", edit your profile here!";
+    }
+    else{
+        // If they are not logged in, they are returned to the login file
+    window.location.replace('index.html'); 
+    }
+</script>
+
+    <script src="Game.js"></script>
+    <script src="Login.js"></script>
+    <script src="highscore.js"></script>
+
+<div class="profileinfo">
+    <li>Username: </li>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
