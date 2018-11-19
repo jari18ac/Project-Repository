@@ -11,14 +11,13 @@ class User {
         this.password = password;
         this.guesses = guesses;
         this.correctGuesses = correctGuesses;
+        this.GuessRatio = Math.round(correctGuesses / guesses * 100);
     }
 
 }
 
 // The array 'users' should contain both what we already have in localstorage + the new users created
 users = JSON.parse(localStorage.getItem("localStorageUsers")) || [];
-
-
 
 //bind button for later use (logging in & creating users)
 var submit = document.getElementById('submit');
@@ -54,7 +53,7 @@ for(var i = 0; i < users.length; i++) {
 }
 }
 //We first push the new user into the 'users' array
-users.splice(0, 0, new User(createUsername, createAge, createPassword, "0", "0"));
+users.splice(0, 0, new User(createUsername, createAge, createPassword, "0", "0", ""));
 localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
 //We then store the updated array within localstorage by converting it to a string
 document.getElementById('loginResult').innerHTML = '<p>Success! The account has been created</p>';
@@ -68,14 +67,14 @@ document.getElementById('loginResult').innerHTML = '<p>Success! The account has 
 else {
 //We have a set of predifined users for the array to use for the users later. We add them only on signup to avoid duplicates
  
-users.push(new User("Mathias", "25", "Pepke", "5", "2"));
-users.push(new User("James", "24", "Richman", "2", "1"));
-users.push(new User("TEst", "24", "12", "1", "0"));
-users.push(new User("Lorem Ipsum", "24", "12", "2", "2"));
-users.push(new User("John", "24", "12", "3", "1"));
-users.push(new User("Pete", "24", "12", "4", "3"));
-users.push(new User("O", "24", "12", "5", "4"));
-users.push(new User("User", "24", "12", "8", "6"));
+users.push(new User("Mathias", "25", "Pepke", "5", "2", ""));
+users.push(new User("James", "24", "Richman", "2", "1", ""));
+users.push(new User("TEst", "24", "12", "1", "0", ""));
+users.push(new User("Lorem Ipsum", "24", "12", "2", "2", ""));
+users.push(new User("John", "24", "12", "3", "1", ""));
+users.push(new User("Pete", "24", "12", "4", "3" ,""));
+users.push(new User("O", "24", "12", "5", "4" ,""));
+users.push(new User("User", "24", "12", "8", "6" ,""));
 }
 localStorage.setItem("localStorageUsers", JSON.stringify(users)); 
 }
@@ -118,7 +117,7 @@ else {
     // We check whether the input matches what is stored in localStorage
     if ((inputUsername == user.username && (inputPassword == user.password))) {
        //We push the logged in user to our new array in order to store it for later use 
-       playThrough.push(new User(user.username, user.age, user.password, user.guesses, user.correctGuesses)); 
+       playThrough.push(new User(user.username, user.age, user.password, user.guesses, user.correctGuesses, user.GuessRatio)); 
        console.log(playThrough);
     //We set a status to the user to be able to check whether they are logged in or not at other pages. Note that the comma (,) functions as a parent or =
      localStorage.setItem('status', 'loggedIn') 
