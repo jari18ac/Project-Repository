@@ -126,7 +126,7 @@ else {
       console.log("playThrough");
      
      // Redirect to new page
-     window.location = "menu.html";
+     window.location = "profile.html";
     jQuery(window).load(function() {
       });
 
@@ -140,4 +140,10 @@ else {
         
     
 }
+
+}
+// We create a function for later use if we want to logout the user
+function logout() {
+    localStorage.removeItem('status');
+    window.location.replace('index.html'); 
 }

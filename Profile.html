@@ -6,39 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="login.css" />
     <title>Profile</title>
-<h1 style="text-align:center;">Profile Page</h1>
 
 </head>
 <body>  
-<!-- Following code checks if a user is logged in -->
- <h3 style="text-align:center;"><span id="welcomeMessage"></span></h3>   
-<script>
-    var currentUser = JSON.parse( localStorage.getItem( "currentUser" ) );
-        console.log(currentUser);
-        //We check whether the user is logged in 
-    if (localStorage.getItem('status', 'loggedIn')) {
-        //Welcome message to the user 
-    document.getElementById("welcomeMessage").innerHTML = currentUser.username + ", edit your profile here!";
-    }
-    else{
-        // If they are not logged in, they are returned to the login file
-    window.location.replace('index.html'); 
-    }
-</script>
+        <div class="nav">
+                <ul>
+                  <li class="active"><a href="#">Profile</a></li>
+                  <li><a href="game.html">Games</a></li>
+                  <li><a href="rank.html">Rank</a></li>
+                  <li><a href="#" onclick="logout();return false;">Logout</a></li>
+                </ul>
+            </div>
+            <div class="profile">
+                
+ 
 
-    <script src="Game.js"></script>
-    <script src="Login.js"></script>
-    <script src="highscore.js"></script>
 
 <div class="profileinfo">
+        <h1>Profile Page</h1>
     <li>Username: </li>
+</div>
 </div>
 
 
-
-
-
-
+<script src="Game.js"></script>
+<script src="Login.js"></script>
+<script src="highscore.js"></script>
 
 
 </body>

@@ -1,7 +1,7 @@
 //We check if the user is logged in 
 if (localStorage.getItem('status', 'loggedIn')) {
 
-  function compare(a, b) {
+  function compareGuessRatio(a, b) {
     // Use toUpperCase() to ignore character casing
     const GuessRatioA = a.GuessRatio;
     const GuessRatioB = b.GuessRatio;
@@ -13,27 +13,43 @@ if (localStorage.getItem('status', 'loggedIn')) {
       comparison = -1;
     }
     return comparison;
+  
   }
-users.sort(compare);
-console.log(users); 
-
-function getRank() {
+  function sortGuessRatio() {
+  users.sort(compareGuessRatio);
 
   // We loop through the array of users 
 for (var i = 0; i < users.length; i++ ){
-document.write("<li>Username: " + users[i].username, " Guess ratio: " + users[i].GuessRatio + "%" + "</li>")
+document.getElementById("highscore").innerHTML += ("<li>Username: " + users[i].username + " Guess ratio: " + users[i].GuessRatio + "%" + "</li>")
+}
+}
 
-   //Note to self: We add the "+" before the names, because the names is strings. We cannot get a sum of strings, and adding the "+" makes the system read it as numbers. This sums the new amount of guesses with the old..
-    //console.log(+TotalGuesses + +users[users.length - 1].guesses);
-    
-//We pull the amount of guesses and correct guesses from all the users in the array and converts the values to a string. The code then converts it so %. 
- //document.write("<li>Username: " + JSON.stringify(users[i].username) + " Guess ratio: " + JSON.stringify((Math.round(users[i].correctGuesses / users[i].guesses * 100))) + "% " + "</li>");
+function compareCorrectGuesses(a, b) {
+  // Use toUpperCase() to ignore character casing
+  const CorrectGuessesA = a.correctGuesses;
+  const CorrectGuessesB = b.correctGuesses;
 
- 
+  let comparison = 0;
+  if (CorrectGuessesA < CorrectGuessesB) {
+    comparison = 1;
+  } else if (CorrectGuessesA > CorrectGuessesB) {
+    comparison = -1;
+  }
+  return comparison;
+
+}
+function sortCorrectGuesses() {
+users.sort(compareCorrectGuesses);
+
+// We loop through the array of users 
+for (var i = 0; i < users.length; i++ ){
+document.getElementById("highscore2").innerHTML += ("<li>Username: " + users[i].username + " Correct guesses: " + users[i].correctGuesses + "</li>")
+}
 }
 
 
-}
+
+
 }
 else{
   // If they are not logged in, they are returned to the login file

@@ -8,8 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-   
-    
+        <div class="nav">
+                <ul>
+                  <li><a href="profile.html">Profile</a></li>
+                  <li class="active"><a href="#">Games</a></li>
+                  <li><a href="rank.html">Rank</a></li>
+                  <li><a href="#" onclick="logout();return false;">Logout</a></li>
+                </ul>
+            </div>
+    <div class="gamepage">
     <div class="game">
     <h3>Play with beverage?</h3>
         <label class="switch">
@@ -17,7 +24,7 @@
             
             <div class="slider"></div>
         </label>
-
+    
         <script type="text/javascript">
            
                 function toggle_visibility(id) {
@@ -29,7 +36,7 @@
                 }
            
             </script>
-        <div id="drinkToggle"></div>
+          <div id='drinkToggle'></div>
 <br>
 <div class="currentCard">
     <h2>Current card</h2>
@@ -52,6 +59,7 @@
     <p id="Guess"></p>
 
     
+</div>
 </div>
 <script src="Login.js"></script>
 <script src="Game.js"></script>
