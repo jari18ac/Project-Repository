@@ -18,9 +18,15 @@ if (localStorage.getItem('status', 'loggedIn')) {
   function sortGuessRatio() {
   users.sort(compareGuessRatio);
 
+  // We create the HTML tag "<ol>" before the <li> will be inserted. If we add <ol> or <ul> in the loop, it will close the tag for each line it prints.
+  var x = document.createElement("ol");
+  document.body.appendChild(x);
+
+
+
   // We loop through the array of users 
 for (var i = 0; i < users.length; i++ ){
-document.getElementById("highscore").innerHTML += ("<li>Username: " + users[i].username + " Guess ratio: " + users[i].GuessRatio + "%" + "</li>")
+document.getElementById("highscore").appendChild(x).innerHTML += ("<li><b> " + users[i].username + ":</b> " + users[i].GuessRatio + "%" + "</li>")
 }
 }
 
@@ -41,9 +47,13 @@ function compareCorrectGuesses(a, b) {
 function sortCorrectGuesses() {
 users.sort(compareCorrectGuesses);
 
+var x = document.createElement("ol");
+document.body.appendChild(x);
+
+
 // We loop through the array of users 
 for (var i = 0; i < users.length; i++ ){
-document.getElementById("highscore2").innerHTML += ("<li>Username: " + users[i].username + " Correct guesses: " + users[i].correctGuesses + "</li>")
+document.getElementById("highscore2").appendChild(x).innerHTML += ("<li><b> " + users[i].username + ":</b> " + users[i].correctGuesses + "</li>")
 }
 }
 

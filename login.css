@@ -18,7 +18,7 @@ nav {
 .nav ul {
   list-style-type: none;
   margin: 0;
-  padding: s0;
+  padding: 0;
   overflow: hidden;
   background-color: #333;
   position: fixed;
@@ -70,14 +70,35 @@ nav {
 }
 
 .rank-nav ul {
-  overflow: auto;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #E0E0E0;
+  width: 560px;
 }
 
 .rank-nav li {
   float: left;
-  margin-right: 0px;
-  padding: 0 10px;
+}
+
+.rank-nav li a {
+  display: block;
+  padding: 0px 0px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+.rank-nav li a:hover:not(.active) {
+  color: #43A047;
+}
+
+.form .swaprank a {
+  margin-left: 120px;
+  color: #0e0a0a;
+  font-size: 12px;
+  text-align: center;
 }
 
 .form input {
@@ -286,6 +307,46 @@ nav {
   display: none;
 }
 
+  ol{
+  counter-reset: li;
+  list-style: none;
+  list-style: decimal;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  padding: 0px 150px;
+  margin-bottom: 0em;
+  text-align: center;
+  }
+  ol ol{
+  margin: 0 0 0 2em;
+  }
+
+  .form .highscore a:hover{
+  background: #d6d4d4;
+  text-decoration:none;
+  transform: scale(1.1);
+  }
+  
+  .rankpage .highscore a:before{
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background:#93C775;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid #fff;
+  text-align: center;
+  font-weight: bold;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  border-radius: 2em;
+  color:#FFF;
+  }
+  
 .profile {
   padding: 5% 0 0;
   margin: auto;
