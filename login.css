@@ -353,13 +353,15 @@ nav {
 }
 
 .profileinfo {
-    position: relative;
+    position: fixed;
+    top: 50%;
+    left: 50%;
     z-index: 1;
     background: #FFFFFF;
-    max-width: 800px;
+    width: 800px;
     height: 500px;
-    margin: 0 auto 100px;
-    padding: 45px;
+    margin-left: -400px;
+    margin-top: -250px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -514,13 +516,15 @@ h1 > span {
 }
 
 .games {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 800px;
-  height: 500px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  max-width: 650px;
+  height: 450px;
+  margin-left: -325px;
+  margin-top: -225px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
