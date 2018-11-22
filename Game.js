@@ -122,7 +122,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 
 	// Adds the picture to the draw
 	document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
-	document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
+	document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
 	
 	//We compare the new drawn card's value to the newest card in the used.cards array
 	if (draw2.value > used_cards[0].value){
@@ -178,7 +178,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		}
 
 		document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
-		document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
+		document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
 		if (draw2.value < used_cards[0].value){
 			rights++;
 			TotalCorrectGuesses++;
