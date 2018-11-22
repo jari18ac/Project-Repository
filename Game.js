@@ -4,6 +4,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 var used_cards = new Array();
 // This counts the amount of correct guesses
 var rights = 0;
+// create a variable to count wrongs, and link to the beer image
+var beer = 1;
 //This variable enables us to disable the button after first use
 var clicked = 0;
 var getPlayThrough = JSON.parse(localStorage.getItem('playThrough'));
@@ -143,8 +145,9 @@ if (rights == 2) {
 	//We reset the variable 'rights' when the guess is wrong
 	rights = 0;
 	TotalGuesses++;
+	beer++;
 	document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
-	document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
+	document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
 }
 //we delete the current card in the used.cards array and push the newly drawn card in there instead
 used_cards.splice(0,1);
@@ -182,8 +185,9 @@ function Lower(){
 	}else if (draw2.value > used_cards[0].value){
 		rights = 0;
 		TotalGuesses++;
+		beer++;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
-		document.getElementById("drinkToggle").innerHTML = ("<img src=images/beer.jpg>")
+		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
 	}
 	used_cards.splice(0,1);
 used_cards.push(draw2); 
