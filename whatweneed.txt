@@ -1,4 +1,0 @@
-// WHAT WE NEED
-
-- Rules
-- Profile page
