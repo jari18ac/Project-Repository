@@ -118,6 +118,13 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	if (deck.length === 0) {
 		window.alert("You ran out of cards! Try again")
 		location.reload();
+			//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
+			playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+			localStorage.setItem("playThrough", JSON.stringify(playThrough));  
+		// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
+			var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
+			// We then replace what is in localStorageUsers with the new merged array. 
+			localStorage.setItem("localStorageUsers", JSON.stringify(merge));
 	}
 
 	// Adds the picture to the draw
@@ -175,6 +182,13 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		if (deck.length === 0) {
 			window.alert("You ran out of cards! Try again")
 			location.reload();
+				//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
+		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+		localStorage.setItem("playThrough", JSON.stringify(playThrough));  
+	// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
+		var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
+		// We then replace what is in localStorageUsers with the new merged array. 
+		localStorage.setItem("localStorageUsers", JSON.stringify(merge));
 		}
 
 		document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
@@ -215,7 +229,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		console.log(used_cards);
 	console.log(deck);
 	
-
+// ************* RULES *************** //
 
 	// Get the modal
 var modal = document.getElementById('rulesContent');
@@ -242,8 +256,15 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+if (getPlayThrough[0].age >= 18) {
+document.getElementById("18orover").innerHTML = ("<h2>Because you are " + getPlayThrough[0].age + " years old:</h2> <ol> <li>You can toggle whether you want to play with a beverage</li><li>If you play with beverage, you need to drink every time you guess wrong</li><li>If you run out of cards, finish your beverage</li></ol>");
+}else if (getPlayThrough[0].age < 18) {
+	document.getElementById("18orover").innerHTML = ("<h2>Because you are " + getPlayThrough[0].age + " years old:</h2> <ol> <li>We cannot legally explain the rules of the drinking game to you!");
+}
 }
 	else{
 	  // If they are not logged in, they are returned to the login file
 	window.location.replace('index.html'); 
 	}
+

@@ -241,7 +241,7 @@ box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   cursor: pointer;
 }
 #controls input[type=button]:disabled {
-  background: rgb(106, 180, 108);
+  background: rgb(132, 184, 134);
 }
 
 #cardResult {
@@ -331,13 +331,14 @@ z-index: 1;
 background: #FFFFFF;
 margin-left: -100px;
 margin-top: -100px;
-padding: 40px;
 text-align: center;
 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); 
 }
 
 #drinkToggle img {
-  width: 30%;
+  width: 35%;
+  float: center;
+  margin-top: 15%;
 }
 
 .form .profile {
