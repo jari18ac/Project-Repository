@@ -5,41 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="login.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <title>Profile</title>
-<h1 style="text-align:center;">Profile Page</h1>
 
 </head>
 <body>  
-<!-- Following code checks if a user is logged in -->
- <h3 style="text-align:center;"><span id="welcomeMessage"></span></h3>   
-<script>
-    var currentUser = JSON.parse( localStorage.getItem( "currentUser" ) );
-        console.log(currentUser);
-        //We check whether the user is logged in 
-    if (localStorage.getItem('status', 'loggedIn')) {
-        //Welcome message to the user 
-    document.getElementById("welcomeMessage").innerHTML = currentUser.username + ", edit your profile here!";
-    }
-    else{
-        // If they are not logged in, they are returned to the login file
-    window.location.replace('index.html'); 
-    }
-</script>
+        <div class="nav">
+                <ul>
+                  <li class="active"><a href="#">Profile</a></li>
+                  <li><a href="games.html">Games</a></li>
+                  <li><a href="rank.html">Rank</a></li>
+                  <li><a href="#" onclick="logout();return false;">Logout</a></li>
+                </ul>
+            </div>
+            <div class="profile">
+                
+ 
 
-    <script src="Game.js"></script>
-    <script src="Login.js"></script>
-    <script src="highscore.js"></script>
 
 <div class="profileinfo">
+<<<<<<< HEAD
     <li>Username: </li>
 </div>
 
 
 
 test code
+=======
+        <div id="userphoto"><img src="images/avatar.png" alt="default avatar"></div>
+       <div id="getUser"></div>
+  
+        <nav id="profiletabs">
+          <ul class="clearfix">
+            <li><a href="#bio" class="sel">Bio</a></li>
+            <li><a href="#settings">Settings</a></li>
+          </ul>
+        </nav>
+        
+        <section id="bio">
+         <p>Hmm</p>
+        </section>
+>>>>>>> f9966e10849bebb7cee90d887588a740e0f92bd5
+
+        
+        <section id="settings" class="hidden">
+          <p>Edit your user settings:</p>
+          
+          <p class="setting"><span>Username <img src="images/edit.png" alt="*Edit*"></span> <div id="getUsername"></div></p>
+          
+          <p class="setting"><span>Password <img src="images/edit.png" alt="*Edit*"></span> ********</p>
+          
+          <p class="setting"><span>Age <img src="images/edit.png" alt="*Edit*"></span> <div id="getAge"></div></p>
+          
+        </section>
+  
+  <script type="text/javascript">
+  $(function(){
+    $('#profiletabs ul li a').on('click', function(e){
+      e.preventDefault();
+      var newcontent = $(this).attr('href');
+      
+      $('#profiletabs ul li a').removeClass('sel');
+      $(this).addClass('sel');
+      
+      $('.profileinfo section').each(function(){
+        if(!$(this).hasClass('hidden')) { $(this).addClass('hidden'); }
+      });
+      
+      $(newcontent).removeClass('hidden');
+    });
+  });
+  </script>
+</div>
+</div>
 
 
-
+<script src="Game.js"></script>
+<script src="Login.js"></script>
+<script src="highscore.js"></script>
+<script src="profile.js"></script>
 
 </body>
 </html>

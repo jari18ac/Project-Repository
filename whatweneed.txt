@@ -1,12 +1,8 @@
 // WHAT WE NEED
 
-- Restart game with new deck 
-- Session/required to login to play -> https://www.taniarascia.com/how-to-use-local-storage-with-javascript/ 
-- Rank updating - almost done; we need 'guesses' and a calculation between guesses and correct guesses  
-- Styling in general
-- Navigation 
+- Restart game with new deck (maybe onload function start game?)
 - Drinking aspect; visualisation
-- Show profile 
-- Show previous card(s) 
-
-
+- Fixing when you draw the same card value as the previous
+- Rules
+- Profile page
+- Something else than "you are the champion" when you win

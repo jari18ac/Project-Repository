@@ -1,3 +1,5 @@
+if (localStorage.getItem('status', 'loggedIn')) {
+
 //We make an empty array for later use 
 var used_cards = new Array();
 // This counts the amount of correct guesses
@@ -190,3 +192,8 @@ deck.splice(random2, 1);
 
 	console.log(used_cards);
 console.log(deck);
+}
+else{
+  // If they are not logged in, they are returned to the login file
+window.location.replace('index.html'); 
+}
