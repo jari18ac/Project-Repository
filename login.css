@@ -440,12 +440,10 @@ img { border: 0; max-width: 100%; }
 #userphoto {
   display: block;
   float: right;
-  margin-left: 10px;
-  margin-bottom: 8px;
 }
 #userphoto img {
   display: block;
-  padding: 2px;
+  padding: 10px;
   background: #fff;
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
@@ -516,24 +514,6 @@ img { border: 0; max-width: 100%; }
 .setting span img { 
   cursor: pointer;
 }
-
-
-#friendslist {
-  display: block;
-  font-size: 1.1em;
-  font-weight: bold;
-}
-#friendslist li { line-height: 30px; }
-#friendslist li a {
-  float: left;
-  height: 30px;
-  padding: 3px 6px;
-  line-height: 22px;
-   margin-right: 15px;
-  border: 1px solid #c9d8b8;
-}
-
-#friendslist li a img { float: left; margin-right: 5px; }
 
 /** clearfix **/
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
