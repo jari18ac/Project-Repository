@@ -146,7 +146,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	if (rights == 5) {
 		// I got it to work by moving the "disabled=false above the "you are the champion"
 		document.getElementById("reload").disabled=false;
-		document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again");
+		document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again or go to <a href='rank.html'>rank</a> to see your updated score.");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
 		//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
@@ -213,7 +213,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		if (rights == 5) {
 		
 			document.getElementById("reload").disabled=false;
-			document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again");
+			document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again or go to <a href='rank.html'>rank</a> to see your updated score.");
 			document.getElementById("draw2").disabled=true;
 			document.getElementById("draw3").disabled=true;
 			//
