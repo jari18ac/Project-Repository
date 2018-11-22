@@ -20,9 +20,9 @@
                 <div class="form">
                                 <form class="register-form">
                                                 <h2>Create user</h2>
-                                        <input type="text" placeholder="Username *" name="username" id="createUsername" value="" required />
+                                        <input type="text" maxlength="12" placeholder="Username *" name="username" id="createUsername" value="" title="Maximum 12 characters" required />
                                         <input type="password"  placeholder="Password *" name="password" id="createPassword" value="" required />
-                                        <input type="number" min="0" step="1" placeholder="Age" name= "age" id="createAge" value="" />
+                                        <input type="number" min="0" max="99" placeholder="Age" name= "age" id="createAge" value="" />
                                         <input type="button" id="button" onclick="signUp()" value="Create" />
                                         <p class="message"><a href="#">Sign In</a></p>
                                         </form>

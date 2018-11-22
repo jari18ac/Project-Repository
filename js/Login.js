@@ -35,9 +35,9 @@ var createAge = document.getElementById('createAge').value;
 var createPassword = document.getElementById('createPassword').value;
 
 //We make sure that you can't create a user without any name or password
-if(createUsername.length == 0 || createPassword.length == 0){
+if(createUsername.length == 0 || createPassword.length == 0 || createAge.length > 2){
     // We set the resultspan with a new text and return false to get out of this function
-    document.getElementById('loginResult').innerHTML = "Please fill in the required fields";
+    document.getElementById('loginResult').innerHTML = "Please fill in the required fields or adjust your age properly";
     return false;
 }
 
