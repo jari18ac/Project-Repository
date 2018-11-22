@@ -1,8 +1,4 @@
 // WHAT WE NEED
 
-- Restart game with new deck (maybe onload function start game?)
-- Drinking aspect; visualisation
-- Fixing when you draw the same card value as the previous
 - Rules
 - Profile page
-- Something else than "you are the champion" when you win

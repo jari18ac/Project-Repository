@@ -6,6 +6,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	var rights = 0;
 	// create a variable to count wrongs, and link to the beer image
 	var beer = 1;
+	var beerlimit = 7;
 	//This variable enables us to disable the button after first use
 	var clicked = 0;
 	var getPlayThrough = JSON.parse(localStorage.getItem('playThrough'));
@@ -92,7 +93,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		clicked++;
 		//Disable button statement: After clicking 'start game' the draw button disables and draw2 + draw3 enables
 		if (clicked > 0) 
-		document.getElementById("draw").disabled=true;
+		document.getElementById("reload").disabled=true;
 		document.getElementById("draw2").disabled=false;
 		document.getElementById("draw3").disabled=false;
 	//(For when game is restarted after 5 correct) We splice the array with used cards to avoid the latest card from the previous game to be taken into account
@@ -109,7 +110,16 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	var random2 = Math.floor(Math.random() * deck.length);
 	var draw2 = deck[random2];
 	console.log(draw2);
+
+	if (beer == beerlimit) { 
+		beer = 1;
+	} 
 	
+	if (deck.length === 0) {
+		window.alert("You ran out of cards! Try again")
+		location.reload();
+	}
+
 	// Adds the picture to the draw
 	document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
 	document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
@@ -126,8 +136,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		//We check whether the user have won yet
 	if (rights == 5) {
 		// I got it to work by moving the "disabled=false above the "you are the champion"
-		document.getElementById("draw").disabled=false;
-		document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
+		document.getElementById("reload").disabled=false;
+		document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
 		//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
@@ -141,7 +151,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		rights = 0;
 	}
 	
-	}else if (draw2.value < used_cards[0].value){
+	}else if (draw2.value <= used_cards[0].value){
 		//We reset the variable 'rights' when the guess is wrong
 		rights = 0;
 		TotalGuesses++;
@@ -159,6 +169,14 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		var random2 = Math.floor(Math.random() * deck.length);
 		var draw2 = deck[random2];
 		console.log(draw2);
+		if (beer == beerlimit){ 
+			beer = 1;
+		} 
+		if (deck.length === 0) {
+			window.alert("You ran out of cards! Try again")
+			location.reload();
+		}
+
 		document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
 		document.getElementById("UsedCardResult").innerHTML = ("<img src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
 		if (draw2.value < used_cards[0].value){
@@ -169,8 +187,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 			document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 		if (rights == 5) {
 		
-			document.getElementById("draw").disabled=false;
-			document.getElementById("Guess").innerHTML = ("YOU ARE THE CHAMPION");
+			document.getElementById("reload").disabled=false;
+			document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again");
 			document.getElementById("draw2").disabled=true;
 			document.getElementById("draw3").disabled=true;
 			//
@@ -181,8 +199,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		localStorage.setItem("localStorageUsers", JSON.stringify(merge));
 			rights = 0;
 		}
-	
-		}else if (draw2.value > used_cards[0].value){
+
+		}else if (draw2.value >= used_cards[0].value){
 			rights = 0;
 			TotalGuesses++;
 			beer++;
@@ -196,9 +214,36 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	
 		console.log(used_cards);
 	console.log(deck);
-	}
+	
+
+
+	// Get the modal
+var modal = document.getElementById('rulesContent');
+
+// Get the button that opens the modal
+var btn = document.getElementById("rulesBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+}
 	else{
 	  // If they are not logged in, they are returned to the login file
 	window.location.replace('index.html'); 
 	}
-	

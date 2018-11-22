@@ -187,25 +187,43 @@ nav {
   background: red;
 }
 
+.beveragepage {
+float: left; 
+width: 200px;
+height: 200px;
+position: fixed;
+top: 11.5%;
+left: 2%;
+z-index: 1;
+background: #FFFFFF;
+margin: 0 auto 100px;
+padding: 40px;
+text-align: center;
+box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .gamepage {
-  width: 600px;
   padding: 5% 0 0;
   margin: auto;
 }
 
 .game {
-  position: relative;
+  position: fixed;
+  top: 50%; 
+  left: 50%;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 390px;
-  margin: 0 auto 100px;
-  padding: 45px;
+  width: 500px;
+  height: 400px;
+  margin-left: -300px;
+  margin-top: -200px;
+  padding: 40px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 #controls {
 	border-top: 1px solid #E0E0E0;
-  padding-top: 350px;
+  padding-top: 270px;
 }
 
 #controls input[type=button] {
@@ -213,7 +231,7 @@ nav {
   text-transform: uppercase;
   outline: 0;
   background: #4CAF50;
-  width: 70%;
+  width: 30%;
   border: 0;
   padding: 15px;
   color: #FFFFFF;
@@ -228,16 +246,22 @@ nav {
 
 #cardResult {
   float: left;
-  padding-top: 5px;
+  width: 20%;
+  height: 20%
+  padding-top: 50px;
+  padding-right: 100px;
 }
 
 #UsedCardResult {
   float: right;
-  padding-top: 5px;
+  width: 20%;
+  padding-top: 50px;
+  padding-left: 100px;
 }
 
 .currentCard {
   float: left;
+  margin-top: 0;
 }
 
 .previousCard {
@@ -254,6 +278,8 @@ nav {
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin-top: 20px;
+    margin-bottom: 15px;
   }
   
   .switch input {display:none;}
@@ -297,7 +323,23 @@ nav {
   }
 
 #drinkToggle {
-  display: none;
+display: none;
+float: left; 
+width: 200px;
+height: 200px;
+position: fixed;
+top: 11.5%;
+left: 2%;
+z-index: 1;
+background: #FFFFFF;
+margin: 0 auto 100px;
+padding: 40px;
+text-align: center;
+box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); 
+}
+
+#drinkToggle img {
+  width: 30%;
 }
 
 .form .profile {
@@ -540,3 +582,66 @@ h1 > span {
 /* Add a hover effect (blue shadow) */
 .games img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.gamepage button{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 15%;
+  border: 0;
+  padding: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  float: right;
+}
+
+.beverageToggle {
+  position: absolute;
+  top: 2%;
+  left: 30%;
+  margin-bottom: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

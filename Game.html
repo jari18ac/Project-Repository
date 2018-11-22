@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="login.css" />
     <title>Higher or Lower?</title>
 </head>
-<body>
+<body onload="startGame()">
         <div class="nav">
                 <ul>
                   <li><a href="profile.html">Profile</a></li>
@@ -16,15 +16,40 @@
                   <li><a href="#" onclick="logout();return false;">Logout</a></li>
                 </ul>
             </div>
-    <div class="gamepage">
-    <div class="game">
-    <h3>Play with beverage?</h3>
-        <label class="switch">
-            <input type="checkbox" onclick="toggle_visibility('drinkToggle')">
-            
-            <div class="slider"></div>
-        </label>
-    
+
+        
+        <div id='drinkToggle'><img src="images/Beers/beer1.png"></div>
+   
+        <div class="gamepage">
+            <div class="game">
+                    <button id="rulesBtn">Rules</button>
+
+                    <!-- The Modal -->
+                    <div id="rulesContent" class="modal">
+                    
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Rules</h2><br>
+                        <ol>
+                        <li>You will automatically be drawn the first card</li>
+                        <li>The deck contains 52 cards. When you run out, the game will restart</li>
+                        <li>You need <b>5 </b>correct guesses in a row to win the game</li>
+                        <li>When you guess wrong, the counter of correct guesses resets</li>
+                        <li>If the value of the new card is the same as the previous, it will count as an incorrect guess </li>
+                        <li>You can toggle whether you want to play with a beverage</li>
+                        <li>If you play with beverage, you need to drink every time you guess wrong</li>
+                        <li>If you run out of cards, finish your beverage</li>
+                        </ol>
+                      </div>
+                    
+                    </div>
+                  <div class="beverageToggle"> <h3>Play with beverage?</h3></div> 
+                    <label class="switch">
+                            <input type="checkbox" onclick="toggle_visibility('drinkToggle')">
+                        
+                            <div class="slider"></div>
+                        </label>
         <script type="text/javascript">
            
                 function toggle_visibility(id) {
@@ -36,7 +61,8 @@
                 }
            
             </script>
-          <div id='drinkToggle'><img src="images/Beers/beer1.png"></div>
+            
+       
 <br>
 <div class="currentCard">
     <h2>Current card</h2>
@@ -51,9 +77,10 @@
        
     </div>
     <div id="controls">
-            <input type="button" id="draw" value="Start game" onclick="startGame();" />
+            
     <input type="button" disabled id="draw2" value="Higher" onclick="Higher();" /> 
     <input type="button" disabled id="draw3" value="Lower" onclick="Lower();" />
+    <input type="button" id="reload" value="Reload game" onclick="location.reload();" />
 </div>
     <p id= "newCard"></p>
     <p id="Guess"></p>
