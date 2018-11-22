@@ -58,6 +58,7 @@ nav {
   margin: auto;
   
 }
+
 .form {
   position: relative;
   z-index: 1;
@@ -69,17 +70,31 @@ nav {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.form2 {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  z-index: 1;
+  background: #FFFFFF;
+  width: 700px;
+  height: 500px;
+  margin-left: -350px;
+  margin-top: -250px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .rank-nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #E0E0E0;
-  width: 560px;
+  width: 100%;
 }
 
 .rank-nav li {
-  float: left;
+  float: center;
 }
 
 .rank-nav li a {
@@ -94,8 +109,7 @@ nav {
   color: #43A047;
 }
 
-.form .swaprank a {
-  margin-left: 120px;
+.form2 .swaprank a {
   color: #0e0a0a;
   font-size: 12px;
   text-align: center;
@@ -145,7 +159,7 @@ nav {
 .form .register-form {
   display: none;
 }
-.form .correct-guesses {
+.form2 .correct-guesses {
   display: none;
 }
 .container {

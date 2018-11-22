@@ -96,6 +96,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		document.getElementById("reload").disabled=true;
 		document.getElementById("draw2").disabled=false;
 		document.getElementById("draw3").disabled=false;
+		if (getPlayThrough[0].age < 18)
+		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
 	//(For when game is restarted after 5 correct) We splice the array with used cards to avoid the latest card from the previous game to be taken into account
 		   used_cards.splice(0,1);
 		   //We push the drawn card into the array used.cards for later use 
@@ -158,7 +160,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		rights = 0;
 	}
 	
-	}else if (draw2.value <= used_cards[0].value){
+	}else if (draw2.value <= used_cards[0].value && getPlayThrough[0].age >= 18){
 		//We reset the variable 'rights' when the guess is wrong
 		rights = 0;
 		TotalGuesses++;
@@ -166,6 +168,15 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
 	}
+	else if (draw2.value <= used_cards[0].value && getPlayThrough[0].age < 18){
+		//We reset the variable 'rights' when the guess is wrong
+		rights = 0;
+		TotalGuesses++;
+		beer++;
+		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
+		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
+	}
+
 	//we delete the current card in the used.cards array and push the newly drawn card in there instead
 	used_cards.splice(0,1);
 	used_cards.push(draw2);
@@ -214,12 +225,20 @@ if (localStorage.getItem('status', 'loggedIn')) {
 			rights = 0;
 		}
 
-		}else if (draw2.value >= used_cards[0].value){
+		}else if (draw2.value >= used_cards[0].value && getPlayThrough[0].age >= 18){
 			rights = 0;
 			TotalGuesses++;
 			beer++;
 			document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
 			document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
+		
+		}
+		else if(draw2.value >= used_cards[0].value && getPlayThrough[0].age < 18){
+			rights = 0;
+			TotalGuesses++;
+			beer++;
+			document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
+			document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
 		}
 		used_cards.splice(0,1);
 	used_cards.push(draw2); 
