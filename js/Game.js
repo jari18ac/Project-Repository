@@ -1,7 +1,7 @@
 if (localStorage.getItem('status', 'loggedIn')) {
 
 	//We make an empty array for later use 
-	var used_cards = new Array();
+	var usedCards = new Array();
 	// This counts the amount of correct guesses
 	var rights = 0;
 	// create a variable to count wrongs, and link to the beer image
@@ -10,9 +10,9 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	//This variable enables us to disable the button after first use
 	var clicked = 0;
 	var getPlayThrough = JSON.parse(localStorage.getItem('playThrough'));
-	var TotalGuesses = +getPlayThrough[0].guesses
-	var TotalCorrectGuesses = +getPlayThrough[0].correctGuesses
-	console.log(TotalGuesses, TotalCorrectGuesses);
+	var totalGuesses = +getPlayThrough[0].guesses
+	var totalCorrectGuesses = +getPlayThrough[0].correctGuesses
+	console.log(totalGuesses, totalCorrectGuesses);
 	
 	
 	//We define a function called card and set three parameters
@@ -99,9 +99,9 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		if (getPlayThrough[0].age < 18)
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
 	//(For when game is restarted after 5 correct) We splice the array with used cards to avoid the latest card from the previous game to be taken into account
-		   used_cards.splice(0,1);
+		   usedCards.splice(0,1);
 		   //We push the drawn card into the array used.cards for later use 
-		   used_cards.push(draw);
+		   usedCards.push(draw);
 		//we use splice to remove the randomly drawn card from the array
 		deck.splice(random, 1);
 		
@@ -120,8 +120,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 	if (deck.length === 0) {
 		window.alert("You ran out of cards! Try again")
 		location.reload();
-			//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
-			playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+			//We push a 'new user' into the array playThrough. However, we use the exact same values except the totalGuesses and TotalCorretGuesses which we now update.  
+			playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, totalGuesses, totalCorrectGuesses));
 			localStorage.setItem("playThrough", JSON.stringify(playThrough));  
 		// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
 			var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
@@ -131,16 +131,16 @@ if (localStorage.getItem('status', 'loggedIn')) {
 
 	// Adds the picture to the draw
 	document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
-	document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
+	document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+usedCards[0].suit+"/"+usedCards[0].name+".jpg>")
 	
 	//We compare the new drawn card's value to the newest card in the used.cards array
-	if (draw2.value > used_cards[0].value){
+	if (draw2.value > usedCards[0].value){
 		//We add one to the variable rights and tell the user how many correct guesses they have 
 		rights++;
-		TotalCorrectGuesses++; 
-		TotalGuesses++;
+		totalCorrectGuesses++; 
+		totalGuesses++;
 		document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
-		console.log(localStorage.getItem('CorrectGuesses', TotalCorrectGuesses));
+		console.log(localStorage.getItem('CorrectGuesses', totalCorrectGuesses));
 		
 		//We check whether the user have won yet
 	if (rights == 5) {
@@ -149,8 +149,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		document.getElementById("Guess").innerHTML = ("Congratulations! Your stats have been stored. Reload game to play again or go to <a href='rank.html'>rank</a> to see your updated score.");
 		document.getElementById("draw2").disabled=true;
 		document.getElementById("draw3").disabled=true;
-		//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
-		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+		//We push a 'new user' into the array playThrough. However, we use the exact same values except the totalGuesses and TotalCorretGuesses which we now update.  
+		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, totalGuesses, totalCorrectGuesses));
 		localStorage.setItem("playThrough", JSON.stringify(playThrough));  
 	// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
 		var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
@@ -160,26 +160,26 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		rights = 0;
 	}
 	
-	}else if (draw2.value <= used_cards[0].value && getPlayThrough[0].age >= 18){
+	}else if (draw2.value <= usedCards[0].value && getPlayThrough[0].age >= 18){
 		//We reset the variable 'rights' when the guess is wrong
 		rights = 0;
-		TotalGuesses++;
+		totalGuesses++;
 		beer++;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
 	}
-	else if (draw2.value <= used_cards[0].value && getPlayThrough[0].age < 18){
+	else if (draw2.value <= usedCards[0].value && getPlayThrough[0].age < 18){
 		//We reset the variable 'rights' when the guess is wrong
 		rights = 0;
-		TotalGuesses++;
+		totalGuesses++;
 		beer++;
 		document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");	
 		document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
 	}
 
 	//we delete the current card in the used.cards array and push the newly drawn card in there instead
-	used_cards.splice(0,1);
-	used_cards.push(draw2);
+	usedCards.splice(0,1);
+	usedCards.push(draw2);
 	deck.splice(random2, 1);
 	}
 		  //The 'Lower' function is the same as Higher - just the other way around 
@@ -193,8 +193,8 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		if (deck.length === 0) {
 			window.alert("You ran out of cards! Try again")
 			location.reload();
-				//We push a 'new user' into the array playThrough. However, we use the exact same values except the TotalGuesses and TotalCorretGuesses which we now update.  
-		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+				//We push a 'new user' into the array playThrough. However, we use the exact same values except the totalGuesses and TotalCorretGuesses which we now update.  
+		playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, totalGuesses, totalCorrectGuesses));
 		localStorage.setItem("playThrough", JSON.stringify(playThrough));  
 	// Here, it will map through the users array, and if it finds a match between the usernames in the playThrough array and users array, it will replace the entire maching object.
 		var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
@@ -203,12 +203,12 @@ if (localStorage.getItem('status', 'loggedIn')) {
 		}
 
 		document.getElementById("cardResult").innerHTML = ("<img src=images/cards/"+draw2.suit+"/"+draw2.name+".jpg>")
-		document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+used_cards[0].suit+"/"+used_cards[0].name+".jpg>")
-		if (draw2.value < used_cards[0].value){
+		document.getElementById("UsedCardResult").innerHTML = ("<img style='opacity: 0.6;' src=images/cards/"+usedCards[0].suit+"/"+usedCards[0].name+".jpg>")
+		if (draw2.value < usedCards[0].value){
 			rights++;
-			TotalCorrectGuesses++;
-			TotalGuesses++;
-			console.log(localStorage.getItem('CorrectGuesses', TotalCorrectGuesses))
+			totalCorrectGuesses++;
+			totalGuesses++;
+			console.log(localStorage.getItem('CorrectGuesses', totalCorrectGuesses))
 			document.getElementById("Guess").innerHTML = ("Correct! You now have "+rights+" correct guesses");
 		if (rights == 5) {
 		
@@ -217,7 +217,7 @@ if (localStorage.getItem('status', 'loggedIn')) {
 			document.getElementById("draw2").disabled=true;
 			document.getElementById("draw3").disabled=true;
 			//
-			playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, TotalGuesses, TotalCorrectGuesses));
+			playThrough.push(new User(getPlayThrough[0].username, getPlayThrough[0].age, getPlayThrough[0].password, totalGuesses, totalCorrectGuesses));
 		localStorage.setItem("playThrough", JSON.stringify(playThrough));   
 		var merge = users.map(obj => playThrough.find(o => o.username === obj.username) || obj);
 		console.log(merge);
@@ -225,27 +225,27 @@ if (localStorage.getItem('status', 'loggedIn')) {
 			rights = 0;
 		}
 
-		}else if (draw2.value >= used_cards[0].value && getPlayThrough[0].age >= 18){
+		}else if (draw2.value >= usedCards[0].value && getPlayThrough[0].age >= 18){
 			rights = 0;
-			TotalGuesses++;
+			totalGuesses++;
 			beer++;
 			document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
 			document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/beer"+beer+".png>")
 		
 		}
-		else if(draw2.value >= used_cards[0].value && getPlayThrough[0].age < 18){
+		else if(draw2.value >= usedCards[0].value && getPlayThrough[0].age < 18){
 			rights = 0;
-			TotalGuesses++;
+			totalGuesses++;
 			beer++;
 			document.getElementById("Guess").innerHTML = ("Wrong! You now have "+rights+" correct guesses");
 			document.getElementById("drinkToggle").innerHTML = ("<img src=images/Beers/noalcohol.jpe><br>You are not old enough for this part!")
 		}
-		used_cards.splice(0,1);
-	used_cards.push(draw2); 
+		usedCards.splice(0,1);
+	usedCards.push(draw2); 
 	deck.splice(random2, 1);
 	}
 	
-		console.log(used_cards);
+		console.log(usedCards);
 	console.log(deck);
 	
 // ************* RULES *************** //

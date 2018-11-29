@@ -1,22 +1,22 @@
 //We check if the user is logged in 
 if (localStorage.getItem('status', 'loggedIn')) {
 
-  function compareGuessRatio(a, b) {
+  function compareguessRatio(a, b) {
     // Use toUpperCase() to ignore character casing
-    const GuessRatioA = a.GuessRatio;
-    const GuessRatioB = b.GuessRatio;
+    const guessRatioA = a.guessRatio;
+    const guessRatioB = b.guessRatio;
   
     let comparison = 0;
-    if (GuessRatioA < GuessRatioB) {
+    if (guessRatioA < guessRatioB) {
       comparison = 1;
-    } else if (GuessRatioA > GuessRatioB) {
+    } else if (guessRatioA > guessRatioB) {
       comparison = -1;
     }
     return comparison;
   
   }
-  function sortGuessRatio() {
-  users.sort(compareGuessRatio);
+  function sortguessRatio() {
+  users.sort(compareguessRatio);
 
   // We create the HTML tag "<ol>" before the <li> will be inserted. If we add <ol> or <ul> in the loop, it will close the tag for each line it prints.
   var x = document.createElement("ol");
@@ -25,10 +25,10 @@ if (localStorage.getItem('status', 'loggedIn')) {
 
 
   // We loop through the array of users 
-for (var i = 0; i < users.length; i++ ){
-document.getElementById("highscore").appendChild(x).innerHTML += ("<li><b> " + users[i].username + ":</b> " + users[i].GuessRatio + "%" + "</li>")
-}
-}
+  for (var i = 0; i < users.length; i++ ){
+  document.getElementById("highscore").appendChild(x).innerHTML += ("<li><b> " + users[i].username + ":</b> " + users[i].guessRatio + "%" + "</li>")
+    }
+  }
 
 function compareCorrectGuesses(a, b) {
   // Use toUpperCase() to ignore character casing
