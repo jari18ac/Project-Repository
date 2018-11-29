@@ -1,8 +1,8 @@
 //We check if the user is logged in 
 if (localStorage.getItem('status', 'loggedIn')) {
 
+  //This function is used to compare the guess ratio of the users array. We will use it when we sort the array in the next function.
   function compareguessRatio(a, b) {
-    // Use toUpperCase() to ignore character casing
     const guessRatioA = a.guessRatio;
     const guessRatioB = b.guessRatio;
   
@@ -31,7 +31,6 @@ if (localStorage.getItem('status', 'loggedIn')) {
   }
 
 function compareCorrectGuesses(a, b) {
-  // Use toUpperCase() to ignore character casing
   const CorrectGuessesA = a.correctGuesses;
   const CorrectGuessesB = b.correctGuesses;
 
